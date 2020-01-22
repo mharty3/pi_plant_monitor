@@ -1,0 +1,23 @@
+body{
+	background:#DFDCE3
+}
+
+.header{
+	width:100%;
+	height:60px;
+	background-color:#1bc708
+}
+
+h1{
+	font-family: Oswald, sans-serif;
+	color:#465C8B;
+}
+
+h3{
+	font-family: Oswald, sans-serif;
+}
+
+.widget_title{
+	text-align: center;
+	color: green
+}
