@@ -1,11 +1,19 @@
 from flask import Flask, render_template, request
-app = Flask(__name__)
-
 import sqlite3
+from path import Path
+import json
 
+# get the path to the database from the config file
+# https://stackoverflow.com/questions/19078170/python-how-would-you-save-a-simple-settings-config-file
+with open(Path('../config.json', 'r')) as f:
+    config = json.load(f)
+db_path = Path(config['db_path'])
+
+app = Flask(__name__)
 # Retrieve data from database
+
 def get_data():
-    conn = sqlite3.connect('../sensor_data.db')
+    conn = sqlite3.connect(db_path)
     curs = conn.cursor()
 
     for row in curs.execute("SELECT * FROM SENSOR_DATA ORDER BY timestamp DESC LIMIT 1"):

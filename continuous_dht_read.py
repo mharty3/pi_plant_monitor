@@ -1,8 +1,15 @@
 import time
 import sqlite3
 import Adafruit_DHT
+import json
+from path import Path
 
-dbname = 'sensor_data.db'
+# get the path to the database from the config file
+# https://stackoverflow.com/questions/19078170/python-how-would-you-save-a-simple-settings-config-file
+with open(Path('./config.json', 'r')) as f:
+    config = json.load(f)
+db_path = Path(config['db_path'])
+
 sample_freq = 2 # time in seconds
 
 # get the data from the sensor
@@ -19,7 +26,7 @@ def get_dht_data():
 
 # write the data to the database
 def log_data(temp, hum):
-    conn = sqlite3.connect(dbname)
+    conn = sqlite3.connect(db_path)
     curs = conn.cursor()
     curs.execute("INSERT INTO SENSOR_DATA values(datetime('now'), (?), (?))", (temp, hum))
     conn.commit()
@@ -27,7 +34,7 @@ def log_data(temp, hum):
 
 # display database data
 def display_data():
-    conn = sqlite3.connect(dbname)
+    conn = sqlite3.connect(db_path)
     curs = conn.cursor()
     print ("\nEntire database contents:\n")
     for row in curs.execute("SELECT * FROM SENSOR_DATA"):
