@@ -5,7 +5,7 @@ import json
 
 # get the path to the database from the config file
 # https://stackoverflow.com/questions/19078170/python-how-would-you-save-a-simple-settings-config-file
-with open(Path('../config.json', 'r')) as f:
+with open(Path('../config.json'), 'r') as f:
     config = json.load(f)
 db_path = Path(config['db_path'])
 
