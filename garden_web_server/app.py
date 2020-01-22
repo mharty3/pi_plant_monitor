@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 import sqlite3
-from path import Path
+from pathlib import Path
 import json
 
 # get the path to the database from the config file

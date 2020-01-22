@@ -2,7 +2,7 @@ import time
 import sqlite3
 import Adafruit_DHT
 import json
-from path import Path
+from pathlib import Path
 
 # get the path to the database from the config file
 # https://stackoverflow.com/questions/19078170/python-how-would-you-save-a-simple-settings-config-file
