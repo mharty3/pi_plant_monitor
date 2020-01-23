@@ -6,6 +6,8 @@ This is a project to experiment with collecting, storing, and serving sensor dat
 A few things need to be done to start the project.
 
 ### Initialize database
+Install sqlite3: `sudo apt-get install sqlite3`
+
 ```
 >>>sqlite3 sensorsData.db
 
