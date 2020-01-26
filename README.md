@@ -20,3 +20,6 @@ sqlite> .quit
 ### Write the database path to the config file
 Write the following to **config.json** and store it in the pi_plant_monitor directory: `{"db_path": "/full/path/to/database.db"}`
 The python files will read the config file to know where to find the database.
+
+### Set up cron to record measurements at particular intervals
+* * * * * cd /home/pi/pi_plant_monitor/ && /home/pi/pi_plant_monitor/pi_plant_monitor_venv/bin/python3 ~/pi_plant_monitor/continuous_dht_read.py >> /home/pi/pi_plant_monitor/cronlog.log 2>&1
